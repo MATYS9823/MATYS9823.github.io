@@ -1,0 +1,122 @@
+/* --- VARIABLES --- */
+:root {
+    --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #4c1d95 100%);
+    --accent-pink: #d946ef;
+    --accent-blue: #3b82f6;
+    --text-white: #f8fafc;
+    --vscode-bg: #1e1e1e;
+    --vscode-header: #323233;
+}
+
+/* --- RESET & BASE --- */
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+body {
+    background: var(--bg-gradient); background-attachment: fixed;
+    color: var(--text-white); font-family: 'Inter', sans-serif;
+    line-height: 1.6; overflow-x: hidden;
+}
+
+/* --- HEADER --- */
+header { padding: 40px 10%; display: flex; justify-content: space-between; align-items: center; }
+.logo-container { display: flex; align-items: center; gap: 15px; }
+.logo-box { border: 1px dotted var(--accent-pink); padding: 10px; font-family: 'Orbitron', sans-serif; font-size: 1.2rem; }
+.logo-text { font-family: 'Orbitron', sans-serif; letter-spacing: 2px; }
+
+/* --- NAVIGATION PAR POINTS --- */
+.dot-nav { position: fixed; right: 30px; top: 50%; transform: translateY(-50%); z-index: 1000; }
+.dot-nav ul { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.dot-nav a { display: flex; align-items: center; justify-content: flex-end; text-decoration: none; }
+.dot-label {
+    color: var(--text-white); background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px);
+    padding: 5px 12px; border-radius: 4px; margin-right: 15px; font-size: 0.8rem;
+    font-family: 'Orbitron', sans-serif; opacity: 0; transform: translateX(20px); transition: all 0.3s ease;
+}
+.dot { width: 12px; height: 12px; background-color: rgba(255, 255, 255, 0.3); border-radius: 50%; transition: all 0.3s ease; }
+.dot-nav a:hover .dot-label { opacity: 1; transform: translateX(0); }
+.dot-nav a:hover .dot { background-color: var(--accent-pink); transform: scale(1.4); }
+.dot-nav a.active .dot { background-color: var(--accent-pink); transform: scale(1.4); box-shadow: 0 0 10px var(--accent-pink); }
+
+/* --- SECTIONS PRINCIPALES --- */
+.hero { height: 70vh; display: flex; flex-direction: column; justify-content: center; padding: 0 10%; }
+.hero h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(3rem, 10vw, 7rem); text-transform: uppercase; letter-spacing: 5px; }
+.hero .year { color: var(--accent-pink); font-size: 1.5rem; font-weight: 600; border-bottom: 2px solid rgba(255,255,255,0.2); width: fit-content; padding-bottom: 10px; }
+
+/* --- NOUVEAU : DOUBLE FENÊTRE VS CODE --- */
+.dual-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Met les fenêtres côte à côte */
+    gap: 40px;
+    padding: 150px 10%;
+    align-items: stretch;
+    position: relative;
+}
+
+.blob-bg {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 500px; height: 500px; filter: blur(80px);
+    border-radius: 50%; opacity: 0.3; z-index: -1; pointer-events: none;
+}
+.blob-purple { background: linear-gradient(45deg, var(--accent-pink), #8b5cf6); }
+
+/* --- FENÊTRES VS CODE (STYLE) --- */
+.vscode-window {
+    background: var(--vscode-bg); border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); 
+    overflow: hidden; font-family: 'Consolas', 'Courier New', monospace; border: 1px solid rgba(255,255,255,0.1);
+}
+.vscode-header { background: var(--vscode-header); padding: 12px 18px; display: flex; align-items: center; gap: 8px; }
+.dot-mac { width: 12px; height: 12px; border-radius: 50%; }
+.red { background: #ff5f56; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
+.file-name { margin-left: 10px; font-size: 13px; opacity: 0.6; }
+.vscode-content { padding: 35px; }
+.vscode-content h2 { color: #dcdcaa; margin-bottom: 20px; font-size: 1.3rem; }
+.vscode-content p { color: #ce9178; margin-bottom: 15px; }
+.vscode-content ul { list-style-position: inside; color: #ce9178; margin-bottom: 15px; }
+
+/* --- RÉSUMÉ PROJETS (CARTES) --- */
+.projects-section { padding: 80px 10%; text-align: center; }
+.projects-section h2 { font-family: 'Orbitron', sans-serif; margin-bottom: 60px; letter-spacing: 3px; text-transform: uppercase; }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; text-align: left;}
+
+.project-card-link { text-decoration: none; display: block; }
+.project-card {
+    border: 1px solid rgba(255,255,255,0.1); padding: 30px; height: 100%;
+    background: rgba(255,255,255,0.03); transition: all 0.4s ease; cursor: pointer;
+}
+.project-card:hover {
+    border-color: var(--accent-pink); background: rgba(217, 70, 239, 0.08);
+    transform: translateY(-10px); box-shadow: 0 10px 30px rgba(217, 70, 239, 0.2);
+}
+.project-card .sae-tag {
+    color: var(--accent-pink); font-size: 0.75rem; font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px; margin-bottom: 10px; display: block;
+}
+.project-card h3 { font-family: 'Orbitron', sans-serif; font-size: 1rem; margin-bottom: 15px; color: var(--text-white); }
+.project-card p { font-size: 0.85rem; opacity: 0.7; margin-bottom: 15px;}
+
+/* --- DÉTAILS DES SAE --- */
+.sae-detail-section { padding: 60px 10%; border-top: 1px solid rgba(255,255,255,0.05); }
+.sae-detail-header { text-align: center; margin-bottom: 40px; }
+.sae-detail-header h2 { font-family: 'Orbitron', sans-serif; color: var(--accent-blue); margin-bottom: 10px; }
+.sae-detail-header p { opacity: 0.6; font-style: italic; }
+
+.details-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
+.info-card {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    padding: 30px; border-radius: 8px; height: 100%;
+}
+.info-card h3 {
+    color: var(--accent-pink); font-family: 'Orbitron', sans-serif; font-size: 1rem;
+    margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;
+}
+.info-card ul { list-style-position: inside; }
+.info-card li { margin-bottom: 10px; opacity: 0.8; font-size: 0.9rem; }
+
+footer { padding: 40px; text-align: center; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); opacity: 0.7; }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .dual-section { grid-template-columns: 1fr; }
+    .details-grid { grid-template-columns: 1fr; }
+    .dot-nav { display: none; }
+}
