@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructions - Ajouter vos fichiers</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: #050505; 
+            color: #eaeaea; 
+            font-family: 'Inter', sans-serif;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        .info-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.005));
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        h1 { font-size: 2rem; margin-bottom: 30px; text-align: center; }
+        h2 { color: #ffffff; margin-top: 25px; margin-bottom: 15px; }
+        .code { 
+            background: #1a1a1a; 
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: monospace;
+            color: #00ff00;
+        }
+        .highlight {
+            background: rgba(255,165,0,0.1);
+            border-left: 3px solid rgb(255,165,0);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        .back-link:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html#projects" class="back-link">← Retour au portfolio</a>
+        
+        <h1>📂 Ajouter vos fichiers de projets</h1>
+        
+        <div class="info-card">
+            <h2>Structure des dossiers</h2>
+            <p>Les fichiers de votre portfolio doivent être organisés comme suit :</p>
+            <div class="code">
+projets/
+├── chatbot-rapport.pdf
+├── chatbot-screenshots.html ✓
+├── infrastructure-rapport.pdf
+├── infrastructure-screenshots.html ✓
+├── database-rapport.pdf
+├── database-screenshots.html ✓
+└── analyse-rapport.pdf
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h2>📄 Rapports PDF</h2>
+            <p>Pour chaque projet, ajoutez un fichier PDF de rapport :</p>
+            <ul>
+                <li><strong>chatbot-rapport.pdf</strong> - Rapport complet du chatbot</li>
+                <li><strong>infrastructure-rapport.pdf</strong> - Documentation installation Debian</li>
+                <li><strong>database-rapport.pdf</strong> - Rapport base de données</li>
+                <li><strong>analyse-rapport.pdf</strong> - Rapport analyse économique</li>
+            </ul>
+            <div class="highlight">
+                💡 <strong>Conseil :</strong> Vous pouvez exporter vos documents Word/Calc en PDF et les placer dans le dossier <code>projets/</code>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h2>📸 Captures d'écran</h2>
+            <p>Les pages de captures d'écran sont déjà créées :</p>
+            <ul>
+                <li><code>chatbot-screenshots.html</code> ✓</li>
+                <li><code>infrastructure-screenshots.html</code> ✓</li>
+                <li><code>database-screenshots.html</code> ✓</li>
+            </ul>
+            <p style="margin-top: 15px;">Pour ajouter vos images, éditez chaque fichier HTML et remplacez les placeholders par vos images PNG/JPG.</p>
+        </div>
+
+        <div class="info-card">
+            <h2>🚀 Comment faire ?</h2>
+            <ol style="margin-left: 20px;">
+                <li>Récupérez vos rapports PDF (Word → PDF)</li>
+                <li>Placez-les dans le dossier <code>projets/</code></li>
+                <li>Prenez des captures d'écran de vos projets (interface, code, diagrammes)</li>
+                <li>Sauvegardez-les en PNG ou JPG dans le dossier <code>projets/</code></li>
+                <li>Éditez les fichiers <code>*-screenshots.html</code> pour ajouter les images</li>
+            </ol>
+        </div>
+
+        <div class="info-card" style="background: rgba(76, 175, 80, 0.1); border-color: rgba(76, 175, 80, 0.3);">
+            <h2 style="color: #4caf50;">✅ Exemple - Ajouter une image</h2>
+            <p>Remplacez dans <code>chatbot-screenshots.html</code> :</p>
+            <div class="code">
+&lt;img src="chatbot-interface.png" alt="Interface du Chatbot" style="max-width: 100%; border-radius: 6px;" /&gt;
+            </div>
+        </div>
+    </div>
+</body>
+</html>
