@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Matys Lefranc - Développeur Full-Stack</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style_main.css">
+</head>
+<body>
+
+    <nav class="dot-nav">
+        <ul>
+            <li><a href="#hero" class="active"><span class="dot-label">Accueil</span><span class="dot"></span></a></li>
+            <li><a href="#specialization"><span class="dot-label">Spécialisation</span><span class="dot"></span></a></li>
+            <li><a href="#projects"><span class="dot-label">Projets</span><span class="dot"></span></a></li>
+            <li><a href="#skills"><span class="dot-label">Compétences</span><span class="dot"></span></a></li>
+            <li><a href="#contact"><span class="dot-label">Contact</span><span class="dot"></span></a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <div class="logo-container">
+            <div class="logo-box">M</div>
+            <div class="logo-text">MATYS LEFRANC</div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1>Étudiant en Développement Full-Stack</h1>
+                <p class="hero-subtitle">BUT Informatique - IUT 2 Grenoble</p>
+                <p class="hero-description">Actuellement en première année d'informatique avec l'ambition de devenir développeur Full-Stack.</p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+                    <a href="#contact" class="btn btn-secondary">Me contacter</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="specialization" class="specialization-section">
+            <div class="section-container">
+                <h2 class="section-title">Ma Spécialisation</h2>
+                <div class="spec-grid">
+                    <div class="spec-card">
+                        <h3>Développement Backend</h3>
+                        <p>Conception d'architectures robustes et performantes en Java. Optimisation algorithmique et gestion efficace des données.</p>
+                        <div class="spec-techs">Java, Python, SQL, Algorithmes</div>
+                    </div>
+                    <div class="spec-card">
+                        <h3>Développement Frontend</h3>
+                        <p>Création d'interfaces web modernes et responsives. Maîtrise des standards web et best practices en développement côté client.</p>
+                        <div class="spec-techs">HTML, CSS, JavaScript</div>
+                    </div>
+                    <div class="spec-card">
+                        <h3>Gestion de Données</h3>
+                        <p>Design et optimisation de bases de données relationnelles. Création de schémas robustes et requêtes pour la création ainsi que les tests unitaires.</p>
+                        <div class="spec-techs">SQL, Modélisation, MCD/MLD</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <div class="section-container">
+                <h2 class="section-title">Mes Projets</h2>
+                <div class="projects-grid">
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Création Chatbot </h3>
+                            <span class="project-type">Backend</span>
+                        </div>
+                        <p class="project-description">Création d'un chatbot capable de répondre à des questions de culture générale avec étude algorithmique.</p>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Java</span>
+                            <span class="tech-badge">Algorithmes</span>
+                            <span class="tech-badge">Performance</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="./projets/chatbot-screenshots.html" class="project-link">Voir plus</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Configuration Poste Développeur</h3>
+                            <span class="project-type">OS</span>
+                        </div>
+                        <p class="project-description">Installation et configuration d'un poste de développement Debian avec JDK, Git et IntelliJ IDEA.</p>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Debian</span>
+                            <span class="tech-badge">Git</span>
+                            <span class="tech-badge">IntelliJ IDEA</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="./projets/infrastructure-screenshots.html" class="project-link">Voir plus</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Projet Base de Données</h3>
+                            <span class="project-type">Database</span>
+                        </div>
+                        <p class="project-description">Création d'une base de données relationnelle avec modélisation MCD/MLD, contraintes d'intégrité et scripts SQL complets.</p>
+                        <div class="tech-stack">
+                            <span class="tech-badge">SQL</span>
+                            <span class="tech-badge">Modélisation</span>
+                            <span class="tech-badge">Optimisation</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="./projets/database-screenshots.html" class="project-link">Voir plus</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3>Analyse Économique & Écologique</h3>
+                            <span class="project-type">Étude d'entreprise</span>
+                        </div>
+                        <p class="project-description">Recueil de besoins pour Orange et étude écologique de son activité.</p>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Analyse</span>
+                            <span class="tech-badge">Rapport</span>
+                            <span class="tech-badge">Écologie</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="./projets/analyse-screenshots.html" class="project-link">Voir plus</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills-section">
+            <div class="section-container">
+                <h2 class="section-title">Compétences Techniques</h2>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Langages</h3>
+                        <div class="skill-badges">
+                            <span class="skill-badge">Java</span>
+                            <span class="skill-badge">Python</span>
+                            <span class="skill-badge">JavaScript</span>
+                            <span class="skill-badge">HTML/CSS</span>
+                            <span class="skill-badge">SQL</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Frameworks & Outils</h3>
+                        <div class="skill-badges">
+                            <span class="skill-badge">Git</span>
+                            <span class="skill-badge">IntelliJ IDEA</span>
+                            <span class="skill-badge">FXML</span>
+                            <span class="skill-badge">Debian/Linux</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Bases de Données</h3>
+                        <div class="skill-badges">
+                            <span class="skill-badge">SQL</span>
+                            <span class="skill-badge">MCD/MLD</span>
+                            <span class="skill-badge">Modélisation</span>
+                            <span class="skill-badge">Optimisation</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Soft Skills</h3>
+                        <div class="skill-badges">
+                            <span class="skill-badge">Travail en équipe</span>
+                            <span class="skill-badge">Rigueur</span>
+                            <span class="skill-badge">Communication</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="section-container">
+                <h2 class="section-title">Me Contacter</h2>
+                
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <h3>Email</h3>
+                        <p>matys0pro@gmail.com</p>
+                        <button class="btn-copy" id="copy-email">Copier l'email</button>
+                    </div>
+
+                    <div class="contact-card">
+                        <h3>Réseaux Professionnels</h3>
+                        <div class="contact-links">
+                            <a href="https://github.com/MATYS9823" target="_blank" class="contact-link">GitHub</a>
+                            <a href="https://linkedin.com/in/matys-lefranc" target="_blank" class="contact-link">LinkedIn</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <h3>Status</h3>
+                        <p><strong>Étudiant en BUT Informatique</strong><br/>IUT 2 Grenoble</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Matys Lefranc | IUT 2 Grenoble</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
