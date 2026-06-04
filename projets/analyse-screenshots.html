@@ -4,88 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analyse Économique & Écologique - Projet</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background: #050505; 
-            color: #eaeaea; 
-            font-family: 'Inter', sans-serif;
-            padding: 40px 20px;
-            line-height: 1.6;
-        }
-        .container { max-width: 1000px; margin: 0 auto; }
-        
-        .back-link {
-            display: inline-block;
-            margin-bottom: 30px;
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 6px;
-            color: #ffffff;
-            text-decoration: none;
-            transition: all 0.25s ease;
-        }
-        .back-link:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: rgba(255,255,255,0.3);
-        }
-
-        h1 { font-size: 2.5rem; margin-bottom: 10px; text-align: center; }
-        .subtitle { text-align: center; color: #a9a9a9; margin-bottom: 40px; font-size: 1.1rem; }
-
-        .project-actions {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-bottom: 50px;
-            flex-wrap: wrap;
-        }
-        .project-actions a {
-            padding: 12px 25px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 6px;
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.25s ease;
-        }
-        .project-actions a:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: rgba(255,255,255,0.3);
-        }
-
-        .section { margin: 40px 0; }
-        .section h2 { 
-            font-size: 1.5rem; 
-            color: #ffffff; 
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .info-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.005));
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 25px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin: 30px 0;
-        }
-        @media (max-width: 900px) {
-            .content-grid { grid-template-columns: 1fr; }
-        }
-
-        ul { margin-left: 20px; margin-top: 10px; }
-        li { margin: 8px 0; }
-    </style>
+    <link rel="stylesheet" href="../style_main.css">
 </head>
 <body>
     <div class="container">
@@ -95,10 +14,9 @@
         <p class="subtitle">Projet Recueil de Besoins & Étude Écologique - 2025-2026</p>
 
         <div class="project-actions">
-            <a href="./analyse-rapport.pdf" target="_blank">📄 Consulter le rapport PDF</a>
+            <a href="Matys-A2-fiche de renseignements.pdf" target="_blank">Consulter le rapport PDF</a>
         </div>
 
-        <!-- DESCRIPTION -->
         <section class="section">
             <h2>Description du Projet</h2>
             <div class="info-card">
@@ -106,7 +24,6 @@
             </div>
         </section>
 
-        <!-- OBJECTIFS & RÉSULTATS -->
         <div class="content-grid">
             <section class="section">
                 <h2>Objectifs</h2>
@@ -135,10 +52,19 @@
                         <li>Analyse et diagnostic stratégique</li>
                         <li>Recueil et documentation de besoins</li>
                         <li>Communication écrite et synthèse</li>
-                    </ul>\
+                    </ul>
                 </div>
             </section>
         </div>
     </div>
+
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+        <button class="lightbox-close" aria-label="Fermer">×</button>
+        <div class="lightbox-inner">
+            <img id="lightbox-img" src="" alt="" />
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
 </body>
 </html>
