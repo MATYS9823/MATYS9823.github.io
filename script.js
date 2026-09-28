@@ -42,9 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // COPIER EMAIL FUNCTION
-    const copyEmailBtn = document.getElementById('copy-email');
-    if (copyEmailBtn) {
-        copyEmailBtn.addEventListener('click', function() {
+    const copyEmailBtnG = document.getElementById('copy-email-gmail');
+    if (copyEmailBtnG) {
+        copyEmailBtnG.addEventListener('click', function() {
             const email = 'matys0pro@gmail.com';
             navigator.clipboard.writeText(email).then(() => {
                 // Feedback visuel
@@ -63,6 +63,30 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+
+    const copyEmailBtnU = document.getElementById('copy-email-univ');
+        if (copyEmailBtnU) {
+            copyEmailBtnU.addEventListener('click', function() {
+                const email = 'matys.lefranc@etu.univ-grenoble-alpes.fr';
+                navigator.clipboard.writeText(email).then(() => {
+                    // Feedback visuel
+                    const originalText = this.textContent;
+                    this.textContent = '✓ Email copié !';
+                    this.classList.add('copied');
+                    
+                    // Restaurer après 2 secondes
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.classList.remove('copied');
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Erreur lors de la copie:', err);
+                    alert('Email: matys.lefranc@etu.univ-grenoble-alpes.fr');
+                });
+            });
+        }
+
 
     // SMOOTH SCROLL
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
