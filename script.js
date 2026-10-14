@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showCopiedFeedback(button) {
         const originalText = button.innerHTML;
-        button.innerHTML = '✓ Email copié !';
+        button.innerHTML = 'Email copié !';
         button.classList.add('copied');
 
         setTimeout(() => {
@@ -202,6 +202,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!lightbox || !lightboxImg) return;
         lightboxImg.src = src;
         lightboxImg.alt = alt || 'Aperçu en grand';
+
+        // Pour les diagrammes SVG, activer le fond blanc pour contraster parfaitement les flèches et écritures noires
+        const isDiagram = src.toLowerCase().endsWith('.svg') || src.toLowerCase().includes('diagramme') || src.toLowerCase().includes('diagram');
+        if (isDiagram) {
+            lightboxImg.classList.add('diagram-mode');
+        } else {
+            lightboxImg.classList.remove('diagram-mode');
+        }
+
         lightbox.classList.add('open');
         lightbox.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';

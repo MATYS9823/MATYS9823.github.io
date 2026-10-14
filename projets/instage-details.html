@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="IN STAGE (GenEvent) — Application desktop de gestion événementielle et d'optimisation financière en Java / JavaFX par Matys Lefranc.">
     <title>IN STAGE (GenEvent) — Application Desktop JavaFX | Matys Lefranc</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎸</text></svg>">
+    
+    <!-- Favicon moderne SVG monochrome sans émoji -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23111116'/><text x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='700' font-size='54' fill='%23ffffff'>M</text></svg>">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style_main.css">
 </head>
 <body>
     <div class="container project-detail-page">
-        <a href="../index.html#projects" class="back-link">← Retour au portfolio</a>
+        <a href="../index.html#projects" class="back-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Retour au portfolio
+        </a>
         
         <div class="project-hero-header">
             <div class="project-tag-pill">Application Desktop • Java / JavaFX</div>
@@ -51,8 +57,8 @@
         <section class="section">
             <h2>Présentation Générale</h2>
             <div class="info-card">
-                <p><strong>IN STAGE (GenEvent)</strong> est une application de bureau lourde développée en <strong>Java</strong> et <strong>JavaFX</strong>. Elle a été conçue pour répondre aux problématiques concrètes des organisateurs d'événements musicaux et de tournées : centraliser la gestion administrative, logistique et humaine, tout en fournissant des outils décisionnels d'optimisation financière.</p>
-                <p style="margin-top: 12px;">L'application accompagne l'utilisateur à chaque étape du cycle de vie d'un concert : de la recherche géolocalisée de salles adaptées jusqu'au suivi du seuil de rentabilité en temps réel en fonction des ventes de billets, du bar et du merchandising.</p>
+                <p><strong>IN STAGE (GenEvent)</strong> est une application de bureau conçue en <strong>Java</strong> et <strong>JavaFX</strong>. Elle a été créée pour répondre aux besoins opérationnels et managériaux des organisateurs d'événements musicaux : centraliser la gestion administrative, humaine et logistique, tout en intégrant des outils d'optimisation financière.</p>
+                <p style="margin-top: 12px;">L'application accompagne l'utilisateur à chaque étape : de la recherche géolocalisée de salles adaptées jusqu'au suivi du seuil de rentabilité en temps réel en fonction des ventes de billets, du bar et du merchandising.</p>
             </div>
         </section>
 
@@ -60,7 +66,7 @@
             <h2>Fonctionnalités Principales</h2>
             <div class="content-grid">
                 <div class="info-card">
-                    <h3 style="color: var(--accent); margin-bottom: 12px; font-size: 1.15rem;"> Gestion des Concerts & Calendrier</h3>
+                    <h3 style="color: var(--text-strong); margin-bottom: 12px; font-size: 1.15rem;">Gestion des Concerts & Calendrier</h3>
                     <ul>
                         <li>Création, modification, consultation et archivage de concerts.</li>
                         <li>Exportation automatique des événements au format standard <code>.ics</code> pour synchronisation avec Google Calendar, Outlook ou Apple Calendar.</li>
@@ -69,25 +75,25 @@
                 </div>
 
                 <div class="info-card">
-                    <h3 style="color: var(--accent); margin-bottom: 12px; font-size: 1.15rem;"> Recherche & Filtrage de Salles</h3>
+                    <h3 style="color: var(--text-strong); margin-bottom: 12px; font-size: 1.15rem;">Recherche & Filtrage de Salles</h3>
                     <ul>
                         <li>Catalogue dynamique de salles de spectacle.</li>
-                        <li>Filtres avancés multicritères : capacité d'accueil, coût de location, disponibilité aux dates cibles.</li>
+                        <li>Filtres multicritères : capacité d'accueil, coût de location, disponibilité aux dates cibles.</li>
                         <li>Intégration d'une vue cartographique web interactive pour visualiser la localisation des salles.</li>
                     </ul>
                 </div>
 
                 <div class="info-card">
-                    <h3 style="color: var(--accent); margin-bottom: 12px; font-size: 1.15rem;"> Logistique, Matériel & Équipes</h3>
+                    <h3 style="color: var(--text-strong); margin-bottom: 12px; font-size: 1.15rem;">Logistique, Matériel & Équipes</h3>
                     <ul>
                         <li>Gestion de l'inventaire technique (sonorisation, éclairage, scène) et suivi des coûts fixes associés.</li>
-                        <li>Constitution d'équipes de staff (sécurité, accueil, technique, régie) et affectation précise des rôles.</li>
+                        <li>Constitution d'équipes de staff (sécurité, accueil, technique, régie) et affectation des rôles.</li>
                         <li>Suivi opérationnel des ressources humaines sur chaque date.</li>
                     </ul>
                 </div>
 
                 <div class="info-card">
-                    <h3 style="color: var(--accent); margin-bottom: 12px; font-size: 1.15rem;"> Simulateur Financier & Dashboard</h3>
+                    <h3 style="color: var(--text-strong); margin-bottom: 12px; font-size: 1.15rem;">Simulateur Financier & Dashboard</h3>
                     <ul>
                         <li>Calcul instantané de la structure de coûts (frais fixes + coûts d'achat variables des stocks).</li>
                         <li><strong>Calcul du seuil de rentabilité (Point mort)</strong> : nombre minimal de billets à écouler pour couvrir les charges, déduction faite des recettes annexes.</li>
@@ -97,16 +103,16 @@
             </div>
 
             <div class="info-card" style="margin-top: 20px;">
-                <h3 style="color: var(--accent); margin-bottom: 12px; font-size: 1.15rem;"> Points de Vente Annexes & Système Cashless</h3>
+                <h3 style="color: var(--text-strong); margin-bottom: 12px; font-size: 1.15rem;">Points de Vente Annexes & Système Cashless</h3>
                 <p>Gestion complète des buvettes et stands de merchandising : création de catalogue produits, gestion des prix d'achat/vente avec application d'une marge personnalisable, et prise en charge des cartes <strong>Cashless / Pass VIP</strong> pour fluidifier les encaissements lors des événements.</p>
             </div>
         </section>
 
         <section class="section">
-            <h2>Architecture Technique & Bonnes Pratiques</h2>
+            <h2>Architecture Technique & Conception</h2>
             <div class="content-grid">
                 <div class="info-card">
-                    <h3 style="color: var(--accent); margin-bottom: 12px; font-size: 1.15rem;">Patron Modèle-Vue-Contrôleur (MVC)</h3>
+                    <h3 style="color: var(--text-strong); margin-bottom: 12px; font-size: 1.15rem;">Patron Modèle-Vue-Contrôleur (MVC)</h3>
                     <ul>
                         <li><strong>Modèle (<code>genevent.modele</code>)</strong> : classes métiers pures indépendantes de toute interface (Concert, Salle, Materiel, Buvette, etc.).</li>
                         <li><strong>Vue (<code>genevent.vue</code>)</strong> : fichiers <code>FXML</code> structurés et modulaires combinés à des feuilles de style CSS pour une IHM moderne.</li>
@@ -115,7 +121,7 @@
                 </div>
 
                 <div class="info-card">
-                    <h3 style="color: var(--accent); margin-bottom: 12px; font-size: 1.15rem;">Persistance Locale Autonome</h3>
+                    <h3 style="color: var(--text-strong); margin-bottom: 12px; font-size: 1.15rem;">Persistance Locale Autonome</h3>
                     <ul>
                         <li>Mécanisme de sérialisation binaire natif Java (<code>Persisteur</code>) permettant une sauvegarde instantanée sans dépendance à un serveur de base de données externe.</li>
                         <li>Stockage sécurisé dans un fichier binaire local <code>persistence/genevent.bdd</code>.</li>
@@ -127,12 +133,12 @@
 
         <section class="section" id="diagrammes">
             <h2>Diagrammes de Conception & Architecture UML</h2>
-            <p style="color: var(--muted); margin-bottom: 25px;">Cliquez sur un diagramme pour l'ouvrir en plein écran haute résolution.</p>
+            <p style="color: var(--muted); margin-bottom: 25px;">Cliquez sur un diagramme pour l'ouvrir en grand format haute résolution.</p>
 
             <div class="screenshot">
                 <h3>Identité Visuelle du Projet</h3>
-                <p>Logo de l'application IN STAGE</p>
-                <div class="placeholder" style="max-height: 220px; aspect-ratio: auto; padding: 20px;">
+                <p>Logo officiel de l'application IN STAGE</p>
+                <div class="placeholder diagram-view" style="max-height: 220px; aspect-ratio: auto; padding: 20px;">
                     <img src="./instage/instage-logo.png" class="screenshot-thumb" data-full="./instage/instage-logo.png" alt="Logo IN STAGE" style="max-height: 180px; width: auto; object-fit: contain;">
                 </div>
             </div>
@@ -140,7 +146,7 @@
             <div class="screenshot">
                 <h3>Diagramme de Classe — Modèle Haut Niveau</h3>
                 <p>Vue d'ensemble des entités métiers et de leurs associations</p>
-                <div class="placeholder" style="aspect-ratio: 16 / 10;">
+                <div class="placeholder diagram-view" style="aspect-ratio: 16 / 10;">
                     <img src="./instage/diagramme-classe-haut-niveau.svg" class="screenshot-thumb" data-full="./instage/diagramme-classe-haut-niveau.svg" alt="Diagramme de classe haut niveau">
                 </div>
             </div>
@@ -148,7 +154,7 @@
             <div class="screenshot">
                 <h3>Diagramme de Classe Détaillé</h3>
                 <p>Structure complète des attributs, visibilités, méthodes et héritages du modèle</p>
-                <div class="placeholder" style="aspect-ratio: 16 / 10;">
+                <div class="placeholder diagram-view" style="aspect-ratio: 16 / 10;">
                     <img src="./instage/diagramme-classe-detaille.svg" class="screenshot-thumb" data-full="./instage/diagramme-classe-detaille.svg" alt="Diagramme de classe détaillé">
                 </div>
             </div>
@@ -157,7 +163,7 @@
                 <div class="screenshot">
                     <h3>Diagramme de Séquence Général</h3>
                     <p>Cycle de vie et orchestration Contrôleur - Vues</p>
-                    <div class="placeholder" style="aspect-ratio: 4 / 3;">
+                    <div class="placeholder diagram-view" style="aspect-ratio: 4 / 3;">
                         <img src="./instage/diagramme-sequence-general.svg" class="screenshot-thumb" data-full="./instage/diagramme-sequence-general.svg" alt="Diagramme de séquence général">
                     </div>
                 </div>
@@ -165,7 +171,7 @@
                 <div class="screenshot">
                     <h3>Séquence : Création d'un Événement</h3>
                     <p>Validation des entrées, persistance et actualisation</p>
-                    <div class="placeholder" style="aspect-ratio: 4 / 3;">
+                    <div class="placeholder diagram-view" style="aspect-ratio: 4 / 3;">
                         <img src="./instage/diagramme-sequence-creation.svg" class="screenshot-thumb" data-full="./instage/diagramme-sequence-creation.svg" alt="Diagramme de séquence création d'un événement">
                     </div>
                 </div>
@@ -186,7 +192,10 @@
         </section>
 
         <div class="project-actions" style="margin-top: 50px;">
-            <a href="../index.html#projects" class="btn btn-secondary">← Retour à la liste des projets</a>
+            <a href="../index.html#projects" class="btn btn-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Retour à la liste des projets
+            </a>
             <a href="https://github.com/MATYS9823/Instage" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
                 Voir le dépôt GitHub
             </a>
@@ -195,9 +204,9 @@
 
     <!-- Lightbox modal -->
     <div id="lightbox" class="lightbox" aria-hidden="true">
-        <button class="lightbox-close" aria-label="Fermer">×</button>
+        <button class="lightbox-close" aria-label="Fermer la vue agrandie">&times;</button>
         <div class="lightbox-inner">
-            <img id="lightbox-img" src="" alt="" />
+            <img id="lightbox-img" src="" alt="Aperçu agrandi" />
         </div>
     </div>
 
