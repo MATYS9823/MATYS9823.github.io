@@ -427,29 +427,34 @@ header {
 }
 
 /* ==========================================================================
-   GRILLES HARMONISÉES (Spécialisation, Projets, Compétences, Contact)
+   GRILLES HARMONISÉES & CARTES COMPACTES
    ========================================================================== */
 .spec-grid,
-.projects-grid,
 .skills-grid,
 .contact-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
 }
 
-/* Cartes communes */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Cartes communes plus compactes et structurées */
 .spec-card,
 .project-card,
 .skill-category,
 .contact-card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    padding: 32px;
-    border-radius: 12px;
+    padding: 22px 24px;
+    border-radius: 10px;
     backdrop-filter: var(--glass-blur);
     transition: var(--transition);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -463,88 +468,116 @@ header {
 .contact-card:hover {
     border-color: var(--card-hover-border);
     background: var(--card-hover-bg);
-    transform: translateY(-5px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
 }
 
-/* Typographie interne */
+/* Typographie interne compacte */
 .spec-card h3,
 .project-card h3,
 .skill-category h3,
 .contact-card h3 {
     color: var(--text-strong);
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 600;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
+    line-height: 1.35;
 }
 
 .spec-card p,
 .project-description,
 .contact-card p {
     color: var(--muted);
-    font-size: 0.95rem;
-    line-height: 1.65;
-    margin-bottom: 20px;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin-bottom: 14px;
     flex-grow: 1;
 }
 
 .spec-techs {
     color: var(--accent-subtle);
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 500;
-    padding-top: 15px;
+    padding-top: 12px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* ==========================================================================
-   CARTES DE PROJETS
+   CARTES DE PROJETS COMPACTES
    ========================================================================== */
 .project-card.featured {
+    grid-column: 1 / -1;
     border-color: rgba(255, 255, 255, 0.18);
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(18, 18, 22, 0.85));
+    padding: 24px 28px;
 }
 
-.project-card.featured:hover {
-    border-color: rgba(255, 255, 255, 0.35);
+.project-card.featured .featured-inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 26px;
+    align-items: center;
 }
 
 .featured-ribbon {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #e2e8f0;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 3px 10px;
+    padding: 3px 9px;
     border-radius: 4px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     width: fit-content;
+}
+
+.featured-highlights {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px 0;
+}
+
+.featured-highlights li {
+    font-size: 0.86rem;
+    color: var(--text);
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    padding-left: 14px;
+}
+
+.featured-highlights li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--muted);
 }
 
 .project-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 12px;
+    gap: 10px;
+    margin-bottom: 8px;
 }
 
 .project-header h3 {
     margin: 0;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     flex: 1;
 }
 
 .project-type {
     background: rgba(255, 255, 255, 0.06);
     color: var(--muted);
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.5px;
     white-space: nowrap;
@@ -554,16 +587,16 @@ header {
 .tech-stack {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 22px;
+    gap: 6px;
+    margin-bottom: 14px;
 }
 
 .tech-badge {
     background: var(--badge-bg);
     color: var(--text);
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 0.78rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.74rem;
     font-weight: 500;
     border: 1px solid var(--badge-border);
     transition: var(--transition);
@@ -580,6 +613,8 @@ header {
     gap: 10px;
     flex-wrap: wrap;
     margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .project-link {
@@ -588,9 +623,9 @@ header {
     gap: 6px;
     color: var(--text-strong);
     text-decoration: none;
-    font-size: 0.88rem;
+    font-size: 0.84rem;
     font-weight: 600;
-    padding: 8px 16px;
+    padding: 7px 15px;
     border: 1px solid var(--card-border);
     border-radius: 6px;
     background: rgba(255, 255, 255, 0.03);
@@ -961,15 +996,18 @@ footer {
     background: #ffffff !important;
     border-color: rgba(255, 255, 255, 0.3) !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    padding: 12px;
 }
 
 .placeholder.diagram-view img,
 .placeholder img[src$=".svg"] {
     background: #ffffff;
-    padding: 16px;
+    padding: 8px;
     border-radius: 6px;
+    max-width: 100%;
     max-height: 100%;
-    width: auto;
+    width: 100%;
+    height: auto;
     object-fit: contain;
 }
 
@@ -1032,6 +1070,11 @@ footer {
     border-radius: 10px;
     box-shadow: 0 10px 60px rgba(0, 0, 0, 0.95);
     border: 1px solid #ffffff;
+    max-width: 92vw;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
 }
 
 .lightbox-close {
