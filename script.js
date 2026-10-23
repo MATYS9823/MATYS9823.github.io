@@ -1,38 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================================================
-       1. ANIMATIONS D'APPARITION AU SCROLL (SCROLL REVEAL)
-       ========================================================================== */
-    const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right');
-
-    if ('IntersectionObserver' in window) {
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.12,
-            rootMargin: '0px 0px -40px 0px'
-        });
-
-        animatedElements.forEach(el => {
-            // Si l'élément est déjà dans le viewport au chargement, le rendre visible immédiatement
-            const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                el.classList.add('visible');
-            } else {
-                revealObserver.observe(el);
-            }
-        });
-    } else {
-        // Fallback pour anciens navigateurs
-        animatedElements.forEach(el => el.classList.add('visible'));
-    }
-
-    /* ==========================================================================
-       2. EFFET MACHINE À ÉCRIRE (TYPEWRITER)
+       1. EFFET MACHINE À ÉCRIRE (TYPEWRITER)
        ========================================================================== */
     const typingElement = document.getElementById('typing-text');
     if (typingElement) {
