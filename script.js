@@ -13,12 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, {
-            threshold: 0.12,
-            rootMargin: '0px 0px -40px 0px'
+            threshold: 0.05,
+            rootMargin: '0px 0px 80px 0px'
         });
 
         animatedElements.forEach(el => {
-            // Si l'élément est déjà dans le viewport au chargement, le rendre visible immédiatement
             const rect = el.getBoundingClientRect();
             if (rect.top < window.innerHeight && rect.bottom > 0) {
                 el.classList.add('visible');
@@ -26,8 +25,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 revealObserver.observe(el);
             }
         });
+
+        if (window.location.hash) {
+            try {
+                const hashEl = document.querySelector(window.location.hash);
+                if (hashEl) {
+                    hashEl.classList.add('visible');
+                    hashEl.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => el.classList.add('visible'));
+                }
+            } catch (e) {}
+        }
     } else {
-        // Fallback pour anciens navigateurs
         animatedElements.forEach(el => el.classList.add('visible'));
     }
 
@@ -40,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "BUT Informatique — IUT 2 Grenoble",
             "Développeur Full-Stack & Logiciel",
             "Conception Java & Architecture MVC",
-            "Passionné de nouvelles technologies"
+            "Applications Web, SQL & Systèmes"
         ];
 
         let phraseIndex = 0;
@@ -185,6 +193,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const target = document.querySelector(href);
                 if (target) {
                     e.preventDefault();
+                    target.classList.add('visible');
+                    target.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => el.classList.add('visible'));
                     target.scrollIntoView({ behavior: 'smooth' });
                 }
             }

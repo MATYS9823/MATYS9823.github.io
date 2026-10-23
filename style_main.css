@@ -600,6 +600,14 @@ header {
     font-weight: 500;
     border: 1px solid var(--badge-border);
     transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tech-badge .skill-icon {
+    width: 14px;
+    height: 14px;
 }
 
 .tech-badge:hover {
@@ -661,13 +669,15 @@ header {
 .skill-badge {
     background: var(--badge-bg);
     color: var(--text);
-    padding: 8px 14px;
+    padding: 7px 13px;
     border-radius: 8px;
     font-size: 0.85rem;
     font-weight: 500;
     border: 1px solid var(--badge-border);
     transition: var(--transition);
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .skill-badge:hover {
@@ -675,6 +685,14 @@ header {
     border-color: rgba(255, 255, 255, 0.3);
     color: #ffffff;
     transform: translateY(-2px);
+}
+
+.skill-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 /* ==========================================================================
