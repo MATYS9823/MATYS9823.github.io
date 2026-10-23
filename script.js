@@ -1,6 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================================================
-       1. EFFET MACHINE À ÉCRIRE (TYPEWRITER)
+       1. ANIMATIONS D'APPARITION AU SCROLL (SCROLL REVEAL)
+       ========================================================================== */
+    const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right');
+
+    if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        animatedElements.forEach(el => {
+            // Si l'élément est déjà dans le viewport au chargement, le rendre visible immédiatement
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                el.classList.add('visible');
+            } else {
+                revealObserver.observe(el);
+            }
+        });
+    } else {
+        // Fallback pour anciens navigateurs
+        animatedElements.forEach(el => el.classList.add('visible'));
+    }
+
+    /* ==========================================================================
+       2. EFFET MACHINE À ÉCRIRE (TYPEWRITER)
        ========================================================================== */
     const typingElement = document.getElementById('typing-text');
     if (typingElement) {
@@ -217,32 +249,4 @@ document.addEventListener('DOMContentLoaded', () => {
             closeLightbox();
         }
     });
-
-    /* ==========================================================================
-       7. BASCULE DU THÈME (LIGHT / DARK THEME TOGGLE)
-       ========================================================================== */
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            let newTheme;
-            
-            if (currentTheme === 'dark') {
-                newTheme = 'light';
-            } else if (currentTheme === 'light') {
-                newTheme = 'dark';
-            } else {
-                // Si non défini, on inverse la détection système
-                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-                newTheme = prefersDark ? 'light' : 'dark';
-            }
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            try {
-                localStorage.setItem('theme', newTheme);
-            } catch (err) {
-                console.warn('Impossible de sauvegarder le thème dans localStorage:', err);
-            }
-        });
-    }
 });
