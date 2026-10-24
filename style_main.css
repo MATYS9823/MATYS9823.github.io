@@ -1,27 +1,39 @@
-/* ==========================================================================
-   PORTFOLIO — MATYS LEFRANC
-   Style Épuré, Minimaliste & Sombre (Haute Lisibilité)
-   ========================================================================== */
-
 :root {
     --bg: #09090b;
-    --bg-secondary: #111114;
-    --card-bg: rgba(18, 18, 22, 0.75);
-    --card-hover-bg: rgba(26, 26, 32, 0.9);
-    --card-border: rgba(255, 255, 255, 0.08);
-    --card-hover-border: rgba(255, 255, 255, 0.25);
+    --bg-secondary: #121214;
+    --card-bg: #111113;
+    --card-hover-bg: #18181b;
+    --card-border: #27272a;
+    --card-hover-border: #52525b;
     --accent: #ffffff;
-    --accent-subtle: #e2e8f0;
-    --muted: #94a3b8;
-    --text: #cbd5e1;
+    --accent-subtle: #e4e4e7;
+    --muted: #a1a1aa;
+    --text: #e4e4e7;
     --text-strong: #ffffff;
-    --badge-bg: rgba(255, 255, 255, 0.05);
-    --badge-border: rgba(255, 255, 255, 0.12);
-    --glass-blur: blur(12px);
-    --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    --badge-bg: #18181b;
+    --badge-border: #27272a;
+    --header-bg: #09090b;
+    --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Reset & Base */
+html[data-theme="light"] {
+    color-scheme: light;
+    --bg: #fafafa;
+    --bg-secondary: #f4f4f5;
+    --card-bg: #ffffff;
+    --card-hover-bg: #f4f4f5;
+    --card-border: #e4e4e7;
+    --card-hover-border: #a1a1aa;
+    --accent: #09090b;
+    --accent-subtle: #27272a;
+    --muted: #71717a;
+    --text: #18181b;
+    --text-strong: #09090b;
+    --badge-bg: #f4f4f5;
+    --badge-border: #e4e4e7;
+    --header-bg: #fafafa;
+}
+
 *, *::before, *::after {
     margin: 0;
     padding: 0;
@@ -33,30 +45,28 @@ html {
     color-scheme: dark;
 }
 
+html[data-theme="light"] {
+    color-scheme: light;
+}
+
 body {
     background-color: var(--bg);
     color: var(--text);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     line-height: 1.65;
     overflow-x: hidden;
     position: relative;
-    background-image:
-        radial-gradient(1000px 500px at 50% 0%, rgba(255, 255, 255, 0.03), transparent 70%),
-        radial-gradient(800px 500px at 90% 80%, rgba(255, 255, 255, 0.02), transparent 60%);
+    background-image: 
+        radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.05) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 16v8M16 20h8' stroke='rgba(255,255,255,0.08)' stroke-width='1' stroke-linecap='square'/%3E%3C/svg%3E");
+    background-size: 100% 100%, 40px 40px;
     background-attachment: fixed;
 }
 
-/* Grille de fond subtile et discrète */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
+html[data-theme="light"] body {
     background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-    background-size: 60px 60px;
-    pointer-events: none;
-    z-index: 0;
+        radial-gradient(circle at 50% 12%, rgba(0, 0, 0, 0.03) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 16v8M16 20h8' stroke='rgba(0,0,0,0.07)' stroke-width='1' stroke-linecap='square'/%3E%3C/svg%3E");
 }
 
 main, header, footer, .container {
@@ -64,16 +74,16 @@ main, header, footer, .container {
     z-index: 1;
 }
 
-/* ==========================================================================
-   EN-TÊTE / HEADER
-   ========================================================================== */
 header {
-    padding: 26px 8%;
+    padding: 22px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    backdrop-filter: var(--glass-blur);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--card-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo-container {
@@ -90,19 +100,18 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--card-border);
     border-radius: 8px;
     font-family: 'Orbitron', sans-serif;
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--accent);
-    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-strong);
+    background: var(--card-bg);
     transition: var(--transition);
 }
 
 .logo-container:hover .logo-box {
-    border-color: rgba(255, 255, 255, 0.4);
-    transform: translateY(-2px);
+    border-color: var(--card-hover-border);
 }
 
 .logo-text {
@@ -116,7 +125,42 @@ header {
 .header-links {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
+}
+
+.theme-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+    color: var(--text-strong);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.theme-toggle-btn:hover {
+    border-color: var(--card-hover-border);
+    background: var(--card-hover-bg);
+}
+
+.theme-toggle-btn .theme-icon-sun {
+    display: none;
+}
+
+.theme-toggle-btn .theme-icon-moon {
+    display: block;
+}
+
+html[data-theme="light"] .theme-toggle-btn .theme-icon-sun {
+    display: block;
+}
+
+html[data-theme="light"] .theme-toggle-btn .theme-icon-moon {
+    display: none;
 }
 
 .header-github-link {
@@ -130,20 +174,16 @@ header {
     padding: 7px 16px;
     border-radius: 6px;
     border: 1px solid var(--card-border);
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--card-bg);
     transition: var(--transition);
 }
 
 .header-github-link:hover {
-    color: var(--accent);
-    border-color: rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.08);
-    transform: translateY(-2px);
+    color: var(--text-strong);
+    border-color: var(--card-hover-border);
+    background: var(--card-hover-bg);
 }
 
-/* ==========================================================================
-   NAVIGATION LATÉRALE (DOT-NAV)
-   ========================================================================== */
 .dot-nav {
     position: fixed;
     right: 25px;
@@ -169,18 +209,16 @@ header {
 
 .dot-label {
     color: var(--text);
-    background: rgba(18, 18, 22, 0.9);
+    background: var(--card-bg);
     padding: 5px 12px;
     border-radius: 6px;
     margin-right: 14px;
     font-size: 0.8rem;
-    font-family: 'Inter', sans-serif;
     font-weight: 500;
     opacity: 0;
     transform: translateX(12px);
     transition: var(--transition);
     border: 1px solid var(--card-border);
-    backdrop-filter: var(--glass-blur);
     pointer-events: none;
     white-space: nowrap;
 }
@@ -188,8 +226,9 @@ header {
 .dot {
     width: 8px;
     height: 8px;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: var(--muted);
     border-radius: 50%;
+    opacity: 0.4;
     transition: var(--transition);
 }
 
@@ -199,19 +238,16 @@ header {
 }
 
 .dot-nav a:hover .dot {
-    background-color: rgba(255, 255, 255, 0.6);
-    transform: scale(1.3);
+    opacity: 0.8;
+    transform: scale(1.2);
 }
 
 .dot-nav a.active .dot {
     background-color: var(--accent);
-    transform: scale(1.5);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    opacity: 1;
+    transform: scale(1.4);
 }
 
-/* ==========================================================================
-   SECTION HERO
-   ========================================================================== */
 .hero {
     min-height: 80vh;
     display: flex;
@@ -281,9 +317,6 @@ header {
     flex-wrap: wrap;
 }
 
-/* ==========================================================================
-   BOUTONS & INTERACTIONS
-   ========================================================================== */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -296,38 +329,31 @@ header {
     font-size: 0.95rem;
     transition: var(--transition);
     cursor: pointer;
-    font-family: 'Inter', sans-serif;
     border: 1px solid transparent;
 }
 
 .btn-primary {
-    background-color: #ffffff;
-    color: #09090b;
-    border-color: #ffffff;
+    background-color: var(--text-strong);
+    color: var(--bg);
+    border-color: var(--text-strong);
 }
 
 .btn-primary:hover {
-    background-color: #e2e8f0;
+    opacity: 0.92;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--card-bg);
     color: var(--text-strong);
     border-color: var(--card-border);
-    backdrop-filter: var(--glass-blur);
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.25);
-    transform: translateY(-2px);
+    background: var(--card-hover-bg);
+    border-color: var(--card-hover-border);
 }
 
-/* ==========================================================================
-   STRUCTURES DES SECTIONS GLOBALES
-   ========================================================================== */
 .section-container {
     max-width: 1240px;
     margin: 0 auto;
@@ -340,7 +366,7 @@ header {
 .skills-section,
 .contact-section {
     padding: 85px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid var(--card-border);
 }
 
 .section-title {
@@ -362,15 +388,11 @@ header {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
+    width: 44px;
     height: 2px;
-    border-radius: 2px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    background: var(--card-hover-border);
 }
 
-/* ==========================================================================
-   SECTION À PROPOS
-   ========================================================================== */
 .about-grid {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
@@ -401,14 +423,12 @@ header {
     padding: 24px 20px;
     border-radius: 10px;
     text-align: center;
-    backdrop-filter: var(--glass-blur);
     transition: var(--transition);
 }
 
 .highlight-card:hover {
     border-color: var(--card-hover-border);
     background: var(--card-hover-bg);
-    transform: translateY(-3px);
 }
 
 .highlight-number {
@@ -426,9 +446,6 @@ header {
     font-weight: 500;
 }
 
-/* ==========================================================================
-   GRILLES HARMONISÉES & CARTES COMPACTES
-   ========================================================================== */
 .spec-grid,
 .skills-grid,
 .contact-grid {
@@ -443,7 +460,6 @@ header {
     gap: 20px;
 }
 
-/* Cartes communes plus compactes et structurées */
 .spec-card,
 .project-card,
 .skill-category,
@@ -452,27 +468,30 @@ header {
     border: 1px solid var(--card-border);
     padding: 22px 24px;
     border-radius: 10px;
-    backdrop-filter: var(--glass-blur);
     transition: var(--transition);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
     text-align: left;
     position: relative;
-    overflow: hidden;
 }
 
-.spec-card:hover,
-.project-card:hover,
-.skill-category:hover,
+.spec-card:hover {
+    border-color: var(--card-hover-border);
+}
+
+.project-card:hover {
+    border-color: var(--card-hover-border);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.skill-category:hover {
+    border-color: var(--card-hover-border);
+}
+
 .contact-card:hover {
     border-color: var(--card-hover-border);
-    background: var(--card-hover-bg);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
 }
 
-/* Typographie interne compacte */
 .spec-card h3,
 .project-card h3,
 .skill-category h3,
@@ -499,16 +518,13 @@ header {
     font-size: 0.82rem;
     font-weight: 500;
     padding-top: 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid var(--card-border);
 }
 
-/* ==========================================================================
-   CARTES DE PROJETS COMPACTES
-   ========================================================================== */
 .project-card.featured {
     grid-column: 1 / -1;
-    border-color: rgba(255, 255, 255, 0.18);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(18, 18, 22, 0.85));
+    border-color: var(--card-hover-border);
+    background: var(--card-bg);
     padding: 24px 28px;
 }
 
@@ -527,9 +543,9 @@ header {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #e2e8f0;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-strong);
+    background: var(--badge-bg);
+    border: 1px solid var(--card-border);
     padding: 3px 9px;
     border-radius: 4px;
     margin-bottom: 12px;
@@ -546,7 +562,7 @@ header {
     font-size: 0.86rem;
     color: var(--text);
     padding: 5px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--card-border);
     position: relative;
     padding-left: 14px;
 }
@@ -573,7 +589,7 @@ header {
 }
 
 .project-type {
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--badge-bg);
     color: var(--muted);
     padding: 3px 8px;
     border-radius: 4px;
@@ -605,15 +621,18 @@ header {
     gap: 6px;
 }
 
-.tech-badge .skill-icon {
-    width: 14px;
-    height: 14px;
+.tech-badge i {
+    font-size: 0.95rem;
+    color: currentColor;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
 }
 
 .tech-badge:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.25);
-    color: var(--accent);
+    border-color: var(--card-hover-border);
+    color: var(--text-strong);
 }
 
 .project-links {
@@ -622,7 +641,7 @@ header {
     flex-wrap: wrap;
     margin-top: auto;
     padding-top: 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid var(--card-border);
 }
 
 .project-link {
@@ -636,30 +655,25 @@ header {
     padding: 7px 15px;
     border: 1px solid var(--card-border);
     border-radius: 6px;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--card-bg);
     transition: var(--transition);
 }
 
 .project-link:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
+    border-color: var(--card-hover-border);
+    background: var(--card-hover-bg);
 }
 
 .project-link.primary {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.25);
-    color: #ffffff;
+    background: var(--badge-bg);
+    border-color: var(--card-hover-border);
+    color: var(--text-strong);
 }
 
 .project-link.primary:hover {
-    background: rgba(255, 255, 255, 0.16);
-    border-color: rgba(255, 255, 255, 0.45);
+    background: var(--card-hover-bg);
 }
 
-/* ==========================================================================
-   COMPÉTENCES / SKILLS
-   ========================================================================== */
 .skill-badges {
     display: flex;
     flex-wrap: wrap;
@@ -680,30 +694,27 @@ header {
     gap: 8px;
 }
 
+.skill-badge i {
+    font-size: 1.15rem;
+    color: currentColor;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
 .skill-badge:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.3);
-    color: #ffffff;
-    transform: translateY(-2px);
+    border-color: var(--card-hover-border);
+    color: var(--text-strong);
+    background: var(--card-hover-bg);
 }
 
-.skill-icon {
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-/* ==========================================================================
-   SECTION CONTACT
-   ========================================================================== */
 .email-box {
     margin-bottom: 20px;
     padding: 14px;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--badge-bg);
+    border: 1px solid var(--card-border);
 }
 
 .email-label {
@@ -724,7 +735,7 @@ header {
 }
 
 .btn-copy {
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--card-bg);
     color: var(--text-strong);
     border: 1px solid var(--card-border);
     padding: 6px 14px;
@@ -733,22 +744,19 @@ header {
     font-size: 0.82rem;
     font-weight: 600;
     transition: var(--transition);
-    font-family: 'Inter', sans-serif;
     display: inline-flex;
     align-items: center;
     gap: 6px;
 }
 
 .btn-copy:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.25);
-    transform: translateY(-2px);
+    border-color: var(--card-hover-border);
+    background: var(--card-hover-bg);
 }
 
 .btn-copy.copied {
-    background: rgba(255, 255, 255, 0.18);
-    border-color: rgba(255, 255, 255, 0.45);
-    color: #ffffff;
+    border-color: var(--text-strong);
+    color: var(--text-strong);
 }
 
 .contact-links {
@@ -766,34 +774,25 @@ header {
     padding: 12px 18px;
     border: 1px solid var(--card-border);
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--card-bg);
     transition: var(--transition);
     font-size: 0.95rem;
     font-weight: 500;
 }
 
 .contact-link:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.3);
-    color: #ffffff;
-    transform: translateX(4px);
+    border-color: var(--card-hover-border);
+    background: var(--card-hover-bg);
 }
 
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
 footer {
     padding: 45px 8%;
     text-align: center;
     font-size: 0.88rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid var(--card-border);
     color: var(--muted);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent);
 }
 
-/* ==========================================================================
-   PAGES DÉTAILS DE PROJETS (Sous-dossier /projets)
-   ========================================================================== */
 .container,
 .container.project-detail-page {
     max-width: 1040px;
@@ -807,7 +806,7 @@ footer {
     gap: 8px;
     margin-bottom: 35px;
     padding: 9px 18px;
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 8px;
     color: var(--text-strong);
@@ -818,9 +817,8 @@ footer {
 }
 
 .back-link:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.25);
-    transform: translateX(-4px);
+    border-color: var(--card-hover-border);
+    background: var(--card-hover-bg);
 }
 
 .project-hero-header {
@@ -830,8 +828,8 @@ footer {
 
 .project-tag-pill {
     display: inline-block;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: var(--badge-bg);
+    border: 1px solid var(--card-border);
     color: var(--text-strong);
     font-size: 0.8rem;
     font-weight: 600;
@@ -853,7 +851,7 @@ footer {
 }
 
 .highlight-title {
-    color: #e2e8f0;
+    color: var(--accent-subtle);
 }
 
 .subtitle {
@@ -885,17 +883,14 @@ footer {
     font-size: 0.95rem;
     transition: var(--transition);
     cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--card-bg);
     color: var(--text-strong);
     border: 1px solid var(--card-border);
-    backdrop-filter: var(--glass-blur);
 }
 
 .project-actions a:not(.btn):hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.25);
-    transform: translateY(-2px);
+    border-color: var(--card-hover-border);
+    background: var(--card-hover-bg);
 }
 
 .tech-metrics-bar {
@@ -913,7 +908,6 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    backdrop-filter: var(--glass-blur);
 }
 
 .metric-label {
@@ -939,7 +933,7 @@ footer {
     color: var(--text-strong);
     margin-bottom: 20px;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--card-border);
     letter-spacing: 0.5px;
 }
 
@@ -949,7 +943,6 @@ footer {
     padding: 28px;
     border-radius: 12px;
     margin: 20px 0;
-    backdrop-filter: var(--glass-blur);
     line-height: 1.7;
 }
 
@@ -991,11 +984,8 @@ footer {
     margin: 25px 0;
 }
 
-/* ==========================================================================
-   DIAGRAMMES & CAPTURES : FOND BLANC POUR HAUTE LISIBILITÉ DES FLÈCHES
-   ========================================================================== */
 .placeholder {
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--badge-bg);
     border: 1px solid var(--card-border);
     border-radius: 8px;
     margin: 10px 0;
@@ -1008,12 +998,11 @@ footer {
     transition: var(--transition);
 }
 
-/* Fond blanc haute clarté pour les diagrammes (évite que les flèches noires ne disparaissent sur fond noir) */
 .placeholder.diagram-view,
 .placeholder:has(img[src$=".svg"]) {
     background: #ffffff !important;
-    border-color: rgba(255, 255, 255, 0.3) !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border-color: var(--card-border) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
     padding: 12px;
 }
 
@@ -1042,15 +1031,11 @@ footer {
     transform: scale(1.02);
 }
 
-/* ==========================================================================
-   LIGHTBOX POUR AGRANDISSEMENT DES IMAGES & DIAGRAMMES
-   ========================================================================== */
 .lightbox {
     position: fixed;
     inset: 0;
     z-index: 99999;
-    background: rgba(0, 0, 0, 0.92);
-    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.95);
     display: none;
     padding: 30px;
     box-sizing: border-box;
@@ -1076,17 +1061,16 @@ footer {
     max-height: 85vh;
     object-fit: contain;
     border-radius: 8px;
-    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    border: 1px solid var(--card-border);
 }
 
-/* Fond blanc dans la Lightbox pour les diagrammes afin de faire ressortir toutes les flèches et liaisons */
 .lightbox-inner img.diagram-mode,
 .lightbox-inner img[src$=".svg"] {
     background: #ffffff !important;
     padding: 24px;
     border-radius: 10px;
-    box-shadow: 0 10px 60px rgba(0, 0, 0, 0.95);
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.9);
     border: 1px solid #ffffff;
     max-width: 92vw;
     max-height: 85vh;
@@ -1118,27 +1102,23 @@ footer {
 .lightbox-close:hover {
     background: #ffffff;
     color: #000000;
-    transform: scale(1.1);
 }
 
-/* ==========================================================================
-   ANIMATIONS D'ENTRÉE (Fade-in au scroll)
-   ========================================================================== */
 .fade-in,
 .fade-in-left,
 .fade-in-right {
     opacity: 0;
-    transform: translateY(22px);
-    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(16px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 }
 
 .fade-in-left {
-    transform: translateX(-30px);
+    transform: translateX(-20px);
 }
 
 .fade-in-right {
-    transform: translateX(30px);
+    transform: translateX(20px);
 }
 
 .fade-in.visible,
@@ -1148,14 +1128,12 @@ footer {
     transform: translate(0, 0);
 }
 
-/* Délais pour l'effet cascade */
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
-.delay-4 { transition-delay: 0.4s; }
-.delay-5 { transition-delay: 0.5s; }
+.delay-1 { transition-delay: 0.08s; }
+.delay-2 { transition-delay: 0.16s; }
+.delay-3 { transition-delay: 0.24s; }
+.delay-4 { transition-delay: 0.32s; }
+.delay-5 { transition-delay: 0.4s; }
 
-/* Accessibilité : désactivation des animations si demandée */
 @media (prefers-reduced-motion: reduce) {
     .fade-in, .fade-in-left, .fade-in-right {
         opacity: 1 !important;
@@ -1164,9 +1142,6 @@ footer {
     }
 }
 
-/* ==========================================================================
-   RESPONSIVE DESIGN (Tablette & Mobile)
-   ========================================================================== */
 @media (max-width: 900px) {
     .dot-nav { display: none; }
     
@@ -1198,7 +1173,7 @@ footer {
 
 @media (max-width: 600px) {
     header {
-        padding: 20px 5%;
+        padding: 18px 5%;
     }
 
     .hero {
@@ -1218,7 +1193,7 @@ footer {
     .project-card,
     .skill-category,
     .contact-card {
-        padding: 22px;
+        padding: 20px;
     }
 
     .btn {

@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    /* ==========================================================================
-       1. ANIMATIONS D'APPARITION AU SCROLL (SCROLL REVEAL)
-       ========================================================================== */
     const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right');
 
     if ('IntersectionObserver' in window) {
@@ -39,9 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
         animatedElements.forEach(el => el.classList.add('visible'));
     }
 
-    /* ==========================================================================
-       2. EFFET MACHINE À ÉCRIRE (TYPEWRITER)
-       ========================================================================== */
     const typingElement = document.getElementById('typing-text');
     if (typingElement) {
         const phrases = [
@@ -84,13 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(type, delta);
         }
 
-        // Lancer l'effet après un court délai
         setTimeout(type, 500);
     }
 
-    /* ==========================================================================
-       3. NAVIGATION PAR POINTS (DOT-NAV)
-       ========================================================================== */
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.dot-nav a');
 
@@ -130,9 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ==========================================================================
-       4. COPIE DES ADRESSES EMAIL DANS LE PRESSE-PAPIER
-       ========================================================================== */
     function setupCopyButton(buttonId, textToCopy) {
         const button = document.getElementById(buttonId);
         if (!button) return;
@@ -183,9 +170,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setupCopyButton('copy-email-gmail', 'matys0pro@gmail.com');
     setupCopyButton('copy-email-univ', 'matys.lefranc@etu.univ-grenoble-alpes.fr');
 
-    /* ==========================================================================
-       5. DÉFILEMENT FLUIDE POUR LES ANCRES (SMOOTH SCROLL)
-       ========================================================================== */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
@@ -201,9 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* ==========================================================================
-       6. LIGHTBOX / APERÇU AGRANDI DES IMAGES & DIAGRAMMES
-       ========================================================================== */
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxClose = document.querySelector('.lightbox-close');
@@ -213,7 +194,6 @@ document.addEventListener('DOMContentLoaded', () => {
         lightboxImg.src = src;
         lightboxImg.alt = alt || 'Aperçu en grand';
 
-        // Pour les diagrammes SVG, activer le fond blanc pour contraster parfaitement les flèches et écritures noires
         const isDiagram = src.toLowerCase().endsWith('.svg') || src.toLowerCase().includes('diagramme') || src.toLowerCase().includes('diagram');
         if (isDiagram) {
             lightboxImg.classList.add('diagram-mode');
@@ -259,4 +239,16 @@ document.addEventListener('DOMContentLoaded', () => {
             closeLightbox();
         }
     });
+
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            try {
+                localStorage.setItem('theme', newTheme);
+            } catch (e) {}
+        });
+    }
 });

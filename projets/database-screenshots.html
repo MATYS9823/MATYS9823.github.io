@@ -8,8 +8,16 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23111116'/><text x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='700' font-size='54' fill='%23ffffff'>M</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style_main.css">
+    <script>
+        (function() {
+            var saved = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var theme = saved || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
 </head>
 <body>
     <div class="container">
@@ -36,18 +44,18 @@
         <section class="section" id="extraits-sql">
             <h2>Extraits SQL</h2>
             <div class="info-card">
-                <pre style="background:#0b0b0b;color:#eaeaea;padding:12px;border-radius:6px;overflow:auto;margin-bottom:10px;"><code>SELECT a.nom, a.prenom
+                <pre style="background:var(--badge-bg);color:var(--text);border:1px solid var(--card-border);padding:12px;border-radius:6px;overflow:auto;margin-bottom:10px;"><code>SELECT a.nom, a.prenom
 FROM adherent a
 JOIN cotisation c ON a.numadh = c.numadh
 WHERE c.anneecot = 2017 AND c.paye = 'non';</code></pre>
 
-                <pre style="background:#0b0b0b;color:#eaeaea;padding:12px;border-radius:6px;overflow:auto;margin-bottom:10px;"><code>SELECT a.nom, ROUND(AVG(c.montant), 2) AS cotis_moy
+                <pre style="background:var(--badge-bg);color:var(--text);border:1px solid var(--card-border);padding:12px;border-radius:6px;overflow:auto;margin-bottom:10px;"><code>SELECT a.nom, ROUND(AVG(c.montant), 2) AS cotis_moy
 FROM adherent a
 JOIN cotisation c ON a.numadh = c.numadh
 GROUP BY a.nom
 ORDER BY a.nom;</code></pre>
 
-                <pre style="background:#0b0b0b;color:#eaeaea;padding:12px;border-radius:6px;overflow:auto;margin-bottom:10px;"><code>SELECT b.numbat, SUM(p.points) AS total_points
+                <pre style="background:var(--badge-bg);color:var(--text);border:1px solid var(--card-border);padding:12px;border-radius:6px;overflow:auto;margin-bottom:10px;"><code>SELECT b.numbat, SUM(p.points) AS total_points
 FROM bateau b
 JOIN participation p ON b.numbat = p.numbat
 JOIN activite a ON p.numact = a.numact
@@ -55,7 +63,7 @@ WHERE a.numact = 2
 GROUP BY b.numbat
 ORDER BY b.numbat;</code></pre>
 
-                <pre style="background:#0b0b0b;color:#eaeaea;padding:12px;border-radius:6px;overflow:auto;"><code>ALTER TABLE loueur ADD COLUMN prixlocation numeric(5,2);
+                <pre style="background:var(--badge-bg);color:var(--text);border:1px solid var(--card-border);padding:12px;border-radius:6px;overflow:auto;"><code>ALTER TABLE loueur ADD COLUMN prixlocation numeric(5,2);
 UPDATE loueur SET prixlocation = 100 WHERE numbat IN (SELECT numbat FROM bateau WHERE nbplaces &lt; 7);
 UPDATE loueur SET prixlocation = 120 WHERE numbat IN (SELECT numbat FROM bateau WHERE nbplaces &gt;= 7);</code></pre>
             </div>
@@ -99,7 +107,7 @@ UPDATE loueur SET prixlocation = 120 WHERE numbat IN (SELECT numbat FROM bateau 
         <section class="section" id="captures">
             <h2>Captures d'écran</h2>
             <div class="screenshot">
-                <h3>Diagramme SEA </h3>
+                <h3>Diagramme SEA</h3>
                 <p>Structure complète de la base de données</p>
                 <div class="placeholder diagram-view">
                     <img src="SEA.png" class="screenshot-thumb" data-full="SEA.png" alt="Capture SEA" />
@@ -116,7 +124,7 @@ UPDATE loueur SET prixlocation = 120 WHERE numbat IN (SELECT numbat FROM bateau 
     </div>
 
     <div id="lightbox" class="lightbox" aria-hidden="true">
-        <button class="lightbox-close" aria-label="Fermer">×</button>
+        <button class="lightbox-close" aria-label="Fermer">&times;</button>
         <div class="lightbox-inner">
             <img id="lightbox-img" src="" alt="" />
         </div>
