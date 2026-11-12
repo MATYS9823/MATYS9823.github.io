@@ -36,51 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
         animatedElements.forEach(el => el.classList.add('visible'));
     }
 
-    const typingElement = document.getElementById('typing-text');
-    if (typingElement) {
-        const phrases = [
-            "BUT Informatique — IUT 2 Grenoble",
-            "Développeur Full-Stack & Logiciel",
-            "Conception Java & Architecture MVC",
-            "Applications Web, SQL & Systèmes"
-        ];
-
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typingSpeed = 65;
-        const deletingSpeed = 35;
-        const pauseAfterComplete = 2000;
-        const pauseAfterDelete = 400;
-
-        function type() {
-            const currentPhrase = phrases[phraseIndex];
-
-            if (isDeleting) {
-                typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            let delta = isDeleting ? deletingSpeed : typingSpeed;
-
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                delta = pauseAfterComplete;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                delta = pauseAfterDelete;
-            }
-
-            setTimeout(type, delta);
-        }
-
-        setTimeout(type, 500);
-    }
-
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.dot-nav a');
 
@@ -150,8 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
             document.execCommand('copy');
             showCopiedFeedback(button);
         } catch (err) {
-            console.error('Erreur copie:', err);
-            prompt("Copiez l'email ci-dessous :", text);
+            console.error(err);
+            prompt("Email :", text);
         }
         document.body.removeChild(textArea);
     }
@@ -192,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function openLightbox(src, alt) {
         if (!lightbox || !lightboxImg) return;
         lightboxImg.src = src;
-        lightboxImg.alt = alt || 'Aperçu en grand';
+        lightboxImg.alt = alt || 'Aperçu';
 
         const isDiagram = src.toLowerCase().endsWith('.svg') || src.toLowerCase().includes('diagramme') || src.toLowerCase().includes('diagram');
         if (isDiagram) {
@@ -240,15 +195,142 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            try {
-                localStorage.setItem('theme', newTheme);
-            } catch (e) {}
-        });
+    const robotSwitch = document.getElementById('theme-toggle');
+    const toggle = document.querySelector('#toggle');
+    let isAnimating = false;
+
+    if (robotSwitch) {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        let currentTheme = document.documentElement.getAttribute('data-theme') || savedTheme || (prefersDark ? 'dark' : 'light');
+
+        if (typeof gsap !== 'undefined') {
+            gsap.set('svg', { visibility: 'visible' });
+
+            if (currentTheme === 'light') {
+                gsap.set('#toggle', { x: 0 });
+            } else {
+                gsap.set('#toggle', { x: -150 });
+            }
+
+            function playRobotPush() {
+                if (isAnimating) return;
+                isAnimating = true;
+
+                let tl = gsap.timeline({
+                    onComplete: () => {
+                        isAnimating = false;
+                    }
+                });
+
+                tl.add('fingerIn', '+=0.08')
+                    .to('#bothHands', {
+                        x: 30,
+                        duration: 0.35,
+                        ease: 'expo.inOut'
+                    }, 'fingerIn')
+                    .to('#toggle', {
+                        x: -140,
+                        duration: 0.3,
+                        ease: 'elastic(0.3, 0.6)'
+                    }, '-=0.15')
+                    .add('handIn', '+=0.15')
+                    .to('#bothHands', {
+                        x: 169,
+                        duration: 0.45,
+                        ease: 'expo.inOut'
+                    }, 'handIn')
+                    .to('#toggle', {
+                        x: 0,
+                        duration: 0.45,
+                        ease: 'expo.inOut',
+                        onComplete: () => {
+                            currentTheme = 'light';
+                            document.documentElement.setAttribute('data-theme', 'light');
+                            try {
+                                localStorage.setItem('theme', 'light');
+                            } catch (e) {}
+                        }
+                    }, 'handIn')
+                    .add('thumbsUp', '+=0.25')
+                    .to('.robotHand', {
+                        duration: 0.116,
+                        opacity: gsap.utils.wrap([0, 1])
+                    }, 'thumbsUp')
+                    .from('#robotThumb', {
+                        rotation: 45,
+                        duration: 1,
+                        transformOrigin: '55% 95%',
+                        ease: 'elastic(0.86, 0.3)'
+                    }, 'thumbsUp')
+                    .to('#bothHands', {
+                        x: '+=20',
+                        duration: 0.25,
+                        ease: 'power2.inOut'
+                    }, 'thumbsUp')
+                    .to('#bothHands', {
+                        rotation: '-=20',
+                        duration: 0.2,
+                        transformOrigin: '20% 50%',
+                        ease: 'power2.inOut'
+                    }, 'thumbsUp')
+                    .to('#bothHands', {
+                        rotation: 0,
+                        duration: 0.35,
+                        transformOrigin: '20% 50%',
+                        ease: 'elastic(0.86, 0.6)'
+                    }, 'thumbsUp+=0.15')
+                    .add('handOut', '+=0.1')
+                    .to('#bothHands', {
+                        x: 0,
+                        duration: 0.35,
+                        ease: 'back.in(1)'
+                    }, 'handOut')
+                    .to('#robotThumb', {
+                        rotation: 23,
+                        duration: 0.3,
+                        ease: 'power2.in'
+                    }, 'handOut')
+                    .set('#robotHand2', { opacity: 0 })
+                    .set('#robotHand', { opacity: 1 });
+            }
+
+            function slideToLeft() {
+                if (isAnimating) return;
+                isAnimating = true;
+
+                gsap.to('#toggle', {
+                    x: -150,
+                    duration: 0.35,
+                    ease: 'power2.inOut',
+                    onComplete: () => {
+                        currentTheme = 'dark';
+                        document.documentElement.setAttribute('data-theme', 'dark');
+                        try {
+                            localStorage.setItem('theme', 'dark');
+                        } catch (e) {}
+                        isAnimating = false;
+                    }
+                });
+            }
+
+            robotSwitch.addEventListener('click', () => {
+                if (isAnimating) return;
+                currentTheme = document.documentElement.getAttribute('data-theme') || currentTheme;
+                if (currentTheme === 'dark') {
+                    playRobotPush();
+                } else {
+                    slideToLeft();
+                }
+            });
+        } else {
+            robotSwitch.addEventListener('click', () => {
+                const nextTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', nextTheme);
+                try {
+                    localStorage.setItem('theme', nextTheme);
+                } catch (e) {}
+            });
+        }
     }
 });
