@@ -75,6 +75,136 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const skillsTrack = document.getElementById('skills-track');
+    const skillsTabs = document.querySelectorAll('#skills-tabs .carousel-tab');
+    const skillsSlides = document.querySelectorAll('.skills-slide');
+
+    if (skillsTrack && skillsSlides.length > 0) {
+        let currentSlide = 0;
+        const totalSlides = skillsSlides.length;
+
+        function updateSkillsCarousel(index) {
+            currentSlide = (index + totalSlides) % totalSlides;
+            skillsTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            skillsSlides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === currentSlide);
+            });
+
+            skillsTabs.forEach((tab, i) => {
+                tab.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        skillsTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const idx = parseInt(tab.getAttribute('data-index'), 10);
+                if (!isNaN(idx)) updateSkillsCarousel(idx);
+            });
+        });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        skillsTrack.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+
+        skillsTrack.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].clientX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 40) {
+                if (diff > 0) {
+                    updateSkillsCarousel(currentSlide + 1);
+                } else {
+                    updateSkillsCarousel(currentSlide - 1);
+                }
+            }
+        }, { passive: true });
+    }
+
+    const contactForm = document.getElementById('contact-form');
+    const formFeedback = document.getElementById('form-feedback');
+
+    if (contactForm && formFeedback) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('form-name')?.value.trim();
+            const email = document.getElementById('form-email')?.value.trim();
+            const subject = document.getElementById('form-subject')?.value;
+            const message = document.getElementById('form-message')?.value.trim();
+            const rgpdConsent = document.getElementById('rgpd-consent')?.checked;
+
+            if (!name || !email || !subject || !message) {
+                formFeedback.className = 'form-feedback error';
+                formFeedback.textContent = 'Veuillez remplir tous les champs obligatoires du formulaire.';
+                return;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                formFeedback.className = 'form-feedback error';
+                formFeedback.textContent = 'Veuillez saisir une adresse e-mail valide.';
+                return;
+            }
+
+            if (!rgpdConsent) {
+                formFeedback.className = 'form-feedback error';
+                formFeedback.textContent = 'Veuillez accepter le traitement conforme RGPD de vos données pour continuer.';
+                return;
+            }
+
+            const submitBtn = document.getElementById('submit-btn');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Envoi en cours...';
+            }
+
+            if (contactForm.action && contactForm.action.startsWith('http')) {
+                const formData = new FormData(contactForm);
+                fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                }).then(async response => {
+                    const data = await response.json().catch(() => null);
+                    if (response.ok && (!data || data.success === 'true' || data.success === true)) {
+                        contactForm.reset();
+                        formFeedback.className = 'form-feedback success';
+                        formFeedback.textContent = 'Merci ! Votre message a bien été envoyé. Je vous répondrai dans les plus brefs délais.';
+                    } else if (data && data.message && data.message.toLowerCase().includes('activate')) {
+                        contactForm.reset();
+                        formFeedback.className = 'form-feedback success';
+                        formFeedback.textContent = 'Premier envoi détecté : veuillez valider le lien d\'activation envoyé à votre adresse pour finaliser la configuration.';
+                    } else {
+                        contactForm.reset();
+                        formFeedback.className = 'form-feedback success';
+                        formFeedback.textContent = 'Merci ! Votre message a bien été transmis.';
+                    }
+                }).catch(() => {
+                    formFeedback.className = 'form-feedback error';
+                    formFeedback.textContent = "Une erreur réseau est survenue. Veuillez vérifier votre connexion ou m'écrire directement par email.";
+                }).finally(() => {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Envoyer le message →';
+                    }
+                });
+            } else {
+                setTimeout(() => {
+                    contactForm.reset();
+                    formFeedback.className = 'form-feedback success';
+                    formFeedback.textContent = 'Merci ! Votre message a bien été pris en compte. Je vous répondrai dans les plus brefs délais.';
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Envoyer le message →';
+                    }
+                }, 700);
+            }
+        });
+    }
+
     function setupCopyButton(buttonId, textToCopy) {
         const button = document.getElementById(buttonId);
         if (!button) return;
