@@ -144,7 +144,7 @@ header {
 }
 
 #panel {
-    fill: var(--bg);
+    fill: #f4f4f5;
     stroke: var(--panel-border);
     stroke-width: 4px;
     transition: fill 0.25s ease, stroke 0.25s ease;
@@ -337,7 +337,6 @@ header {
 .contact-section {
     padding: 70px 0;
     border-top: none;
-    margin-top: 60px ;
 }
 
 .section-title {
@@ -385,11 +384,6 @@ header {
     transition: var(--transition);
 }
 
-.highlight-card:hover {
-    border-color: var(--card-hover-border);
-    background: var(--card-hover-bg);
-}
-
 .highlight-number {
     font-family: 'Orbitron', sans-serif;
     font-size: 2rem;
@@ -432,23 +426,6 @@ header {
     flex-direction: column;
     text-align: left;
     position: relative;
-}
-
-.spec-card:hover {
-    border-color: var(--card-hover-border);
-}
-
-.project-card:hover {
-    border-color: var(--card-hover-border);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
-}
-
-.skill-category:hover {
-    border-color: var(--card-hover-border);
-}
-
-.contact-card:hover {
-    border-color: var(--card-hover-border);
 }
 
 .spec-card h3,
@@ -587,11 +564,6 @@ header {
     line-height: 1;
 }
 
-.tech-badge:hover {
-    border-color: var(--card-hover-border);
-    color: var(--text-strong);
-}
-
 .project-links {
     display: flex;
     gap: 10px;
@@ -657,12 +629,6 @@ header {
     align-items: center;
     justify-content: center;
     line-height: 1;
-}
-
-.skill-badge:hover {
-    border-color: var(--card-hover-border);
-    color: var(--text-strong);
-    background: var(--card-hover-bg);
 }
 
 .carousel-tabs {
@@ -752,10 +718,6 @@ header {
     flex-direction: column;
     justify-content: space-between;
     transition: var(--transition);
-}
-
-.contact-main-card:hover {
-    border-color: var(--card-hover-border);
 }
 
 .contact-main-card h3 {
