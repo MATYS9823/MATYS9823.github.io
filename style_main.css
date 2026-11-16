@@ -144,7 +144,7 @@ header {
 }
 
 #panel {
-    fill: var(--panel-bg);
+    fill: var(--bg);
     stroke: var(--panel-border);
     stroke-width: 4px;
     transition: fill 0.25s ease, stroke 0.25s ease;
@@ -337,6 +337,7 @@ header {
 .contact-section {
     padding: 70px 0;
     border-top: none;
+    margin-top: 60px ;
 }
 
 .section-title {
