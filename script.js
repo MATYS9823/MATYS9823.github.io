@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         x: 0,
                         duration: 0.45,
                         ease: 'expo.inOut',
-                        onComplete: () => {
+                        onStart: () => {
                             currentTheme = 'light';
                             document.documentElement.setAttribute('data-theme', 'light');
                             try {
@@ -429,16 +429,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (isAnimating) return;
                 isAnimating = true;
 
+                currentTheme = 'dark';
+                document.documentElement.setAttribute('data-theme', 'dark');
+                try {
+                    localStorage.setItem('theme', 'dark');
+                } catch (e) {}
+
                 gsap.to('#toggle', {
                     x: -150,
-                    duration: 0.35,
-                    ease: 'power2.inOut',
+                    duration: 0.45,
+                    ease: 'back.out(1.2)',
                     onComplete: () => {
-                        currentTheme = 'dark';
-                        document.documentElement.setAttribute('data-theme', 'dark');
-                        try {
-                            localStorage.setItem('theme', 'dark');
-                        } catch (e) {}
                         isAnimating = false;
                     }
                 });

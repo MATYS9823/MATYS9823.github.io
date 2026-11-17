@@ -13,9 +13,10 @@
     --badge-bg: #18181b;
     --badge-border: #27272a;
     --header-bg: #09090b;
-    --panel-bg: #18181b;
-    --panel-border: #3f3f46;
+    --panel-bg: #1c1c21;
+    --panel-border: #71717a;
     --toggle-fill: #ffffff;
+    --toggle-border: #27272a;
     --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -35,9 +36,10 @@ html[data-theme="light"] {
     --badge-bg: #f4f4f5;
     --badge-border: #e4e4e7;
     --header-bg: #f4f4f5;
-    --panel-bg: #e4e4e7;
-    --panel-border: #a1a1aa;
+    --panel-bg: #f4f4f5;
+    --panel-border: #71717a;
     --toggle-fill: #18181b;
+    --toggle-border: #d4d4d8;
 }
 
 *, *::before, *::after {
@@ -62,6 +64,7 @@ body {
     line-height: 1.65;
     overflow-x: hidden;
     position: relative;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 main, header, footer, .container {
@@ -79,6 +82,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: background-color 0.4s ease;
 }
 
 .logo-container {
@@ -144,16 +148,18 @@ header {
 }
 
 #panel {
-    fill: #f4f4f5;
+    fill: var(--panel-bg);
     stroke: var(--panel-border);
-    stroke-width: 4px;
-    transition: fill 0.25s ease, stroke 0.25s ease;
+    stroke-width: 6px;
+    transition: fill 0.35s ease, stroke 0.35s ease;
 }
 
 #toggle {
     fill: var(--toggle-fill);
+    stroke: var(--toggle-border);
+    stroke-width: 3px;
     cursor: pointer;
-    transition: fill 0.25s ease;
+    transition: fill 0.35s ease, stroke 0.35s ease;
 }
 
 #robotHand2 {
