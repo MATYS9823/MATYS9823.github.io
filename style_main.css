@@ -51,6 +51,15 @@ html[data-theme="light"] {
 html {
     scroll-behavior: smooth;
     color-scheme: dark;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
 }
 
 html[data-theme="light"] {
@@ -63,6 +72,8 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     line-height: 1.65;
     overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     position: relative;
     transition: background-color 0.4s ease, color 0.4s ease;
 }
